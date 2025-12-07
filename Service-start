@@ -51,5 +51,19 @@ if journalctl --since "1 hour ago" | grep -Ei "$keywords" > /tmp/log_alert.txt; 
          mail -s "Alert email detected on $(hostname)" "$Email" < /tmp/log_alert.txt
         fi 
 fi 
+########################################################################################################################################################
 
+check root filesystem utilization
+
+#!/bin/bash
+use=$(df / | awk 'NR==2{print $5}' | sed 's/%//')
+
+if [ $use -ge 80 ]; then
+     echo "disk is high: ${use}%"
+else
+     echo "disk is ok: ${use}%"
+fi
+
+
+##############################################################################################################################################################
 
