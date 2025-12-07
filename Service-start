@@ -1,33 +1,43 @@
 CHECK HTTPD SERVICE AND START IF NOT WORKING
 
 #!/bin/bash
+apache="httpd"
 
-if systemctl is-active httpd; then
-   echo "service is running"
+if systemctl is-active --quiet "$apache" ; then 
+    echo "$apache is running"
 else
-   echo "service need to start"
-   systemctl start httpd
-fi
+    echo "$apache need to start" 
+     systemctl start "$apache" 
+if systemctl is-active --quiet "$apache" ; then
+    echo "$apache started sucessfully"
+else
+    echo "service having issue"
+    fi 
 
-[root@rahul git-hero-to-zero]#
+fi 
+
+
+#######################################################################################################################################################
 
 
 CHECK SSHD SERVICE AND START IF NOT WORKING
 
 #!/bin/bash
-service=sshd
-if systemctl is-active --quiet "$service"; then
-    echo "service is running"
-else
-   echo "service need to start"
-   systemctl start sshd
-   if systemctl is-active --quiet "$service"; then
-   echo "$service started sucessfully"
-   else
-    echo "$service having issue"
+service="sshd"
 
-   fi
-fi
+if systemctl is-active --quiet "$service" ; then
+   echo "service is running"
+
+else 
+    echo "service need to start"
+    systemctl start "$service"
+
+if systemctl is-active --quiet "$service" ; then
+    echo "$service is started sucessfuly"
+else
+    echo "service having issue"
+    fi  
+fi 
 
 
 
