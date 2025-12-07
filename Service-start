@@ -40,5 +40,16 @@ else
 fi 
 
 
+#######################################################################################################################################################
+
+#!/bin/bash
+Email="rahoolnew@gmail.com"
+keywords="Failed|error|denied|refused"
+
+if journalctl --since "1 hour ago" | grep -Ei "$keywords" > /tmp/log_alert.txt; then
+        if [ -s /tmp/log_alert.txt ]; then
+         mail -s "Alert email detected on $(hostname)" "$Email" < /tmp/log_alert.txt
+        fi 
+fi 
 
 
