@@ -1,0 +1,12 @@
+#We want to print only the users who have /bin/bash as their login shell.
+awk -F':' '$7 == "/bin/bash" { print $1 }' /etc/passwd
+
+# Which awk command will print only the usernames?
+awk -F':' '{ print $1 }' /etc/passwd
+
+#filtered users with /bin/bash and printed username + home directory.
+awk -F':' '$7 == "/bin/bash" { print $1,$6 }' /etc/passwd
+
+
+
+
