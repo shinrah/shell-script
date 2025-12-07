@@ -1,0 +1,26 @@
+CHECK HTTPD SERVICE AND START IF NOT WORKING
+
+#!/bin/bash
+
+if systemctl is-active httpd; then
+   echo "service is running"
+else
+   echo "service need to start"
+   systemctl start httpd
+fi
+
+[root@rahul git-hero-to-zero]#
+
+
+CHECK SSHD SERVICE AND START IF NOT WORKING
+#!/bin/bash
+if systemctl is-active sshd; then
+    echo "service is running"
+else
+   echo "service need to start"
+   systemctl start sshd
+fi
+
+
+
+
